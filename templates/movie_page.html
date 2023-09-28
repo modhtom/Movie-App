@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link  href="http://192.168.1.4:5000/static/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/owl.carousel.min.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/nouislider.min.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/ionicons.min.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/plyr.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/photoswipe.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/default-skin.css" rel="stylesheet">
+    <link  href="http://192.168.1.4:5000/static/css/main.css" rel="stylesheet">
+  
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="static/icon/favicon-32x32.png"
+      sizes="32x32"
+    />
+    <link rel="apple-touch-icon" href="static/icon/favicon-32x32.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="static/icon/apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="static/icon/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="static/icon/apple-touch-icon-144x144.png"
+    />
+
+    <title>FlixGo</title>
+  </head>
+  <body class="body">
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-131043298-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-131043298-3");
+    </script>
+    <!-- header -->
+    <header class="header">
+      <div class="header__wrap">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="header__content">
+                <!-- header logo -->
+                <a href="http://192.168.1.4:5000/home" class="header__logo">
+                  <img src="http://192.168.1.4:5000/static/img/logo.svg" alt="" />
+                </a>
+                <!-- end header logo -->
+
+                <!-- header nav -->
+                <ul class="header__nav">
+                  <li class="dropdown header__nav-item">
+                    <a
+                      class="dropdown-toggle header__nav-link header__nav-link--more"
+                      href="#"
+                      role="button"
+                      id="dropdownMenuMore"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      ><i class="icon ion-ios-more"></i
+                    ></a>
+
+                    <ul
+                      class="dropdown-menu header__dropdown-menu"
+                      aria-labelledby="dropdownMenuMore"
+                    >
+                      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                      <li><a href="register">Sign In</a></li>
+                      <li><a href="login">Sign Up</a></li>
+                    </ul>
+                  </li>
+                  <!-- end dropdown -->
+                </ul>
+                <!-- end header nav -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- header search -->
+      <form action="{{ url_for('seachByName') }}" class="header__search" method="post">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="header__search-content">
+                <form method="post" action="{{ url_for('seachByName') }}">
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search..."
+                    name="search_input"
+                  />
+                  <button class="search-button" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- end header search -->
+    </header>
+    <!-- end header -->
+
+    <!-- details -->
+    <section class="section details">
+      <!-- details background -->
+      <div class="details__bg" data-bg="http://192.168.1.4:5000/static/img/home/home__bg.jpg"></div>
+      <!-- end details background -->
+
+      <!-- details content -->
+      <div class="container">
+        <div class="row">
+          <!-- title -->
+          <div class="col-12">
+            <h1 class="details__title">{{movie[2]}}</h1>
+          </div>
+          <!-- end title -->
+
+          <!-- content -->
+          <div class="col-12 col-xl-6">
+            <div class="card card--details">
+              <div class="row">
+                <!-- card cover -->
+                <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
+                  <div class="card__cover">
+                    <img src="{{ url_for('static', filename=movie[5]) }}" alt="" />
+                  </div>
+                </div>
+                <!-- end card cover -->
+
+                <!-- card content -->
+                <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
+                  <div class="card__content">
+                    <div class="card__wrap">
+                      <span class="card__rate"
+                        ><i class="icon ion-ios-rate"></i>⭐{{movie[4]}}</span
+                      >
+                    </div>
+
+                    <div class="card__description card__description--details">
+                      {{movie[3]}}
+                    </div>
+                                  <a
+                href="{{ url_for('download_video',movie_id=movie[0]) }}"
+                download
+                >Download</a
+              >
+                  </div>
+                </div>
+                <!-- end card content -->
+              </div>
+            </div>
+          </div>
+          <!-- end content -->
+
+          <!-- player -->
+          <div class="col-12 col-xl-6">
+            <video
+              controls
+              crossorigin
+              playsinline
+              poster="{{ url_for('static', filename=movie[5]) }}"
+              id="player"
+            >
+              <!-- Video files -->
+              <source
+                src="{{url_for('static', filename=movie[6])}}"
+                type="video/mp4"
+                size="576"
+              />
+            </video>
+
+          </div>
+          <!-- end player -->
+
+        </div>
+      </div>
+      <!-- end details content -->
+    </section>
+    <!-- end details -->
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-8 col-xl-8">
+            <!-- content tabs -->
+            <div class="tab-content" id="myTabContent">
+              <div
+                class="tab-pane fade show active"
+                id="tab-1"
+                role="tabpanel"
+                aria-labelledby="1-tab"
+              >
+                <div class="row">
+                  <!-- comments -->
+                  <div class="col-12">
+                <h1 style="color: beige; font-size: medium;">Comments:</h1>
+                    <div class="comments">
+                      <ul class="comments__list">
+                        <li class="comments__item">
+                          {% for comment in comments %}
+                          <div class="comments__autor">
+                            <span class="comments__name">{{ comment[0] }}</span>
+                            <span class="comments__time"
+                            >{{ comment[2] }}</span
+                            >
+                          </div>
+                          <p class="comments__text">
+                            {{ comment[1] }}
+                          </p>
+                          
+                          {% endfor %}
+                        </li>
+                <h1 style="color: beige; font-size: medium;">Give Us Your Opinon:</h1>
+                <form class="login-form" method="post" action="{{ url_for('addComment', movie_id=movie[0]) }}">
+                    <textarea
+                        type="textarea"
+                        class="form-control"
+                        placeholder="Comment"
+                        required
+                        name="comment"
+                        style="font-size: small;"
+                        ></textarea>
+                        <br/>
+                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                    </div>
+                  </form>
+                      </form>
+                    </div>
+                  </div>
+                  <!-- end comments -->
+                </div>
+              </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- end content -->
+
+    <!-- JS -->
+    <script src="http://192.168.1.4:5000/static/js/jquery-3.3.1.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/bootstrap.bundle.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/owl.carousel.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/jquery.mousewheel.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/wNumb.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/nouislider.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/plyr.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/jquery.morelines.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/photoswipe.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/photoswipe-ui-default.min.js"></script>
+    <script src="http://192.168.1.4:5000/static/js/main.js"></script>
+  </body>
+</html>

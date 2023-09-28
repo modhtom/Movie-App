@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/css/splide.min.css" />
+    <link rel="stylesheet" href="static/css/slimselect.css" />
+    <link rel="stylesheet" href="static/css/plyr.css" />
+    <link rel="stylesheet" href="static/css/photoswipe.css" />
+    <link rel="stylesheet" href="static/css/default-skin.css" />
+    <link rel="stylesheet" href="static/css/main.css" />
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="static/icon/favicon-32x32.png"
+      sizes="32x32"
+    />
+    <link rel="apple-touch-icon" href="static/icon/favicon-32x32.png" />
+
+    <meta
+      name="description"
+      content="Online Movies, TV Shows & Cinema HTML Template"
+    />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Dmitry Volkov" />
+    <title>FlixGo – Online Movies, TV Shows & Cinema HTML Template</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="header__content">
+              <!-- header logo -->
+              <a href="index.html" class="header__logo">
+                <img src="static/img/logo.svg" alt="" />
+              </a>
+              <!-- end header logo -->
+
+              <!-- header categories -->
+              <div class="header__categories">
+                <button
+                  class="header__categories-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+              <!-- end header categories -->
+
+              <!-- header nav -->
+              <ul class="header__nav">
+
+                  <ul class="dropdown-menu header__dropdown-menu">
+                    <li><a href="home">HOME</a></li>
+                    <li><a href="register">Sign In</a></li>
+                    <li><a href="login">Sign Up</a></li>
+                    <li><a href="logout">LOGOUT</a></li>
+                  </ul>
+                </li>
+                <!-- end dropdown -->
+
+              </ul>
+              <!-- end header nav -->
+
+              <!-- header actions -->
+              <div class="header__actions">
+                <!-- header search -->
+                <form action="{{ url_for('seachByName') }}" class="header__search" method="post">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="header__search-content">
+                          <form method="post" action="{{ url_for('seachByName') }}">
+                            <input
+                              type="text"
+                              class="search-input"
+                              placeholder="Search..."
+                              name="search_input"
+                            />
+                            <button class="search-button" type="submit">Search</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!-- end header search -->
+
+              </div>
+              <!-- end header actions -->
+
+              <!-- header menu btn -->
+              <button class="header__btn" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+              <!-- end header menu btn -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+
+    <!-- page title -->
+    <section
+      class="section section--first section--bg"
+      data-bg="static/img/bg/section__bg.jpg"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section__wrap">
+              <!-- section title -->
+              <h1 class="section__title section__title--head">My FlixGo</h1>
+              <!-- end section title -->
+
+              <!-- breadcrumbs -->
+              <ul class="breadcrumbs">
+                <li class="breadcrumbs__item"><a href="home">Home</a></li>
+                <li class="breadcrumbs__item breadcrumbs__item--active">
+                  Profile
+                </li>
+              </ul>
+              <!-- end breadcrumbs -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end page title -->
+
+    <!-- content -->
+    <div class="content">
+      <!-- profile -->
+      <div class="profile">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="profile__content">
+                <div class="profile__user">
+                  <div class="profile__avatar">
+                    <img src="static/img/user.svg" alt="" />
+                  </div>
+                  <div class="profile__meta">
+                    <h3>Username: {{user[2]}}</h3>
+                    <span>FlixGo ID: {{user[0]}}</span>
+                  </div>
+                </div>
+
+                <!-- content tabs nav -->
+                <ul
+                  class="nav nav-tabs content__tabs content__tabs--profile"
+                  id="content__tabs"
+                  role="tablist"
+                >
+                  <li class="nav-item" role="presentation">
+                    <button
+                      id="1-tab"
+                      class="active"
+                      data-bs-toggle="tab"
+                      data-bs-target="#tab-1"
+                      type="button"
+                      role="tab"
+                      aria-controls="tab-1"
+                      aria-selected="true"
+                    >
+                      Profile
+                    </button>
+                  </li>
+
+                  <li class="nav-item" role="presentation">
+                    <button
+                      id="2-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#tab-2"
+                      type="button"
+                      role="tab"
+                      aria-controls="tab-2"
+                      aria-selected="false"
+                    >
+                      Subscription
+                    </button>
+                  </li>
+
+                  <li class="nav-item" role="presentation">
+                    <button
+                      id="3-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#tab-3"
+                      type="button"
+                      role="tab"
+                      aria-controls="tab-3"
+                      aria-selected="false"
+                    >
+                      Settings
+                    </button>
+                  </li>
+                </ul>
+                <!-- end content tabs nav -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end profile -->
+
+      <div class="container">
+        <!-- content tabs -->
+        <div class="tab-content">
+          <div
+            class="tab-pane fade show active"
+            id="tab-1"
+            role="tabpanel"
+            aria-labelledby="1-tab"
+            tabindex="0"
+          >
+            <div class="row">
+              <!-- stats -->
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stats">
+                  <span>Premium plan</span>
+                  <p>$19.99</p>
+                  <img src="static/img/credit-card.svg" alt="" />
+                </div>
+              </div>
+              <!-- end stats -->
+
+              <!-- stats -->
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stats">
+                  <span>Films watched</span>
+                  <p>moviesnumber</p>
+                  <img src="static/img/film.svg" alt="" />
+                </div>
+              </div>
+              <!-- end stats -->
+
+              <!-- stats -->
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stats">
+                  <span>Your comments</span>
+                  <p>commentsnumber</p>
+                  <img src="static/img/comments.svg" alt="" />
+                </div>
+              </div>
+              <!-- end stats -->
+
+
+              <!-- dashbox -->
+              <div class="col-12 col-xl-6">
+                <div class="dashbox">
+                  <div class="dashbox__title">
+                    <h3><img src="static/img/film.svg" alt="" />Recent Downloaded Movies</h3>
+                  </div>
+
+                  <div class="dashbox__table-wrap dashbox__table-wrap--1">
+                    <table class="dashbox__table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>TITLE</th>
+                          <th>RATING</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {%for movie in movies%}
+                        <tr>
+                          <td>
+                            <div class="dashbox__table-text">{{movie[0]}}</div>
+                          </td>
+                          <td>
+                            <div class="dashbox__table-text">
+                              <a href="{{ url_for('view_movie', movie_id=movie[0]) }}">{{movie[2]}}</a>
+                            </div>
+                          </td>
+                          <td>
+                            <div
+                              class="dashbox__table-text dashbox__table-text--rate"
+                            >
+                            {{movie[4]}}
+                            </div>
+                          </td>
+                        </tr>
+                        {%endfor%}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- end dashbox -->
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="tab-2"
+            role="tabpanel"
+            aria-labelledby="2-tab"
+            tabindex="0"
+          >
+            <div class="row">
+              <!-- active price plan -->
+              <div class="col-12 col-md-6 col-lg-4 order-md-2 order-lg-1">
+                <div class="plan plan--active">
+                  <h3 class="plan__title">Starter</h3>
+                  <span class="plan__price">Free</span>
+                  <ul class="plan__list">
+                    <li>7 days</li>
+                    <li>720p Resolution</li>
+                    <li>Limited Availability</li>
+                    <li>Desktop Only</li>
+                    <li>Limited Support</li>
+                  </ul>
+                  <button type="button" class="plan__btn">
+                    <span>Current plan</span>
+                  </button>
+                </div>
+              </div>
+              <!-- end active price plan -->
+
+              <!-- price -->
+              <div class="col-12 col-lg-4 order-md-1 order-lg-2">
+                <div class="plan plan--premium">
+                  <h3 class="plan__title">Premium</h3>
+                  <span class="plan__price">$19.99</span>
+                  <ul class="plan__list">
+                    <li>1 Month</li>
+                    <li>Full HD</li>
+                    <li>Lifetime Availability</li>
+                    <li>TV & Desktop</li>
+                    <li>24/7 Support</li>
+                  </ul>
+                  <button
+                    type="button"
+                    data-bs-toggle="modal"
+                    class="plan__btn"
+                    data-bs-target="#plan-modal"
+                  >
+                    <span>Choose plan</span>
+                  </button>
+                </div>
+              </div>
+              <!-- end price -->
+
+              <!-- price -->
+              <div class="col-12 col-md-6 col-lg-4 order-md-3 order-lg-3">
+                <div class="plan">
+                  <h3 class="plan__title">Cinematic</h3>
+                  <span class="plan__price">$39.99</span>
+                  <ul class="plan__list">
+                    <li>2 Months</li>
+                    <li>Ultra HD</li>
+                    <li>Lifetime Availability</li>
+                    <li>Any Device</li>
+                    <li>24/7 Support</li>
+                  </ul>
+                  <button
+                    type="button"
+                    data-bs-toggle="modal"
+                    class="plan__btn"
+                    data-bs-target="#plan-modal"
+                  >
+                    <span>Choose plan</span>
+                  </button>
+                </div>
+              </div>
+              <!-- end price -->
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="tab-3"
+            role="tabpanel"
+            aria-labelledby="3-tab"
+            tabindex="0"
+          >
+            <div class="row">
+
+              <!-- password form -->
+              <div class="col-12 col-lg-6">
+                <form 
+                  action="{{url_for('updatepassword')}}"
+                  method="post"
+                  class="sign__form sign__form--profile">
+                  <div class="row">
+                    <div class="col-12">
+                      <h4 class="sign__title">Change password</h4>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                      <div class="sign__group">
+                        <label class="sign__label" for="oldpass"
+                          >Old Password</label
+                        >
+                        <input
+                          id="oldpass"
+                          type="password"
+                          name="oldpass"
+                          class="sign__input"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                      <div class="sign__group">
+                        <label class="sign__label" for="newpass"
+                          >New Password</label
+                        >
+                        <input
+                          id="newpass"
+                          type="password"
+                          name="newpass"
+                          class="sign__input"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                      <div class="sign__group">
+                        <label class="sign__label" for="confirmpass"
+                          >Confirm New Password</label
+                        >
+                        <input
+                          id="confirmpass"
+                          type="password"
+                          name="confirmpass"
+                          class="sign__input"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <button class="sign__btn sign__btn--small" type="button">
+                        <span>Change</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- end password form -->
+            </div>
+          </div>
+        </div>
+        <!-- end content tabs -->
+      </div>
+    </div>
+    <!-- end content -->
+
+    <!-- plan modal -->
+    <div
+      class="modal fade"
+      id="plan-modal"
+      tabindex="-1"
+      aria-labelledby="plan-modal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal__content">
+            <button
+              class="modal__close"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M13.41,12l6.3-6.29a1,1,0,1,0-1.42-1.42L12,10.59,5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12l-6.3,6.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l6.29,6.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"
+                />
+              </svg>
+            </button>
+
+            <form action="#" class="modal__form">
+              <h4 class="modal__title">Select plan</h4>
+
+              <div class="sign__group">
+                <label for="fullname" class="sign__label">Name</label>
+                <input
+                  id="fullname"
+                  type="text"
+                  name="name"
+                  class="sign__input"
+                  placeholder="Full name"
+                />
+              </div>
+
+              <div class="sign__group">
+                <label for="email" class="sign__label">Email</label>
+                <input
+                  id="email"
+                  type="text"
+                  name="email"
+                  class="sign__input"
+                  placeholder="example@domain.com"
+                />
+              </div>
+
+              <div class="sign__group">
+                <label class="sign__label" for="value">Choose plan:</label>
+                <select class="sign__select" name="value" id="value">
+                  <option value="20">Premium - $19.99</option>
+                  <option value="40">Cinematic - $39.99</option>
+                </select>
+
+                <span class="sign__text"
+                  >You can spend money from your account on the renewal of the
+                  connected packages, or to order cars on our website.</span
+                >
+              </div>
+
+              <div class="sign__group">
+                <label class="sign__label">Payment method:</label>
+
+                <ul class="sign__radio">
+                  <li>
+                    <input id="type1" type="radio" name="type" checked="" />
+                    <label for="type1">Visa</label>
+                  </li>
+                  <li>
+                    <input id="type2" type="radio" name="type" />
+                    <label for="type2">Mastercard</label>
+                  </li>
+                  <li>
+                    <input id="type3" type="radio" name="type" />
+                    <label for="type3">Paypal</label>
+                  </li>
+                </ul>
+              </div>
+
+              <button type="button" class="sign__btn sign__btn--modal">
+                <span>Proceed</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end plan modal -->
+
+    <!-- JS -->
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/splide.min.js"></script>
+    <script src="static/js/smooth-scrollbar.js"></script>
+    <script src="static/js/slimselect.min.js"></script>
+    <script src="static/js/plyr.min.js"></script>
+    <script src="static/js/photoswipe.min.js"></script>
+    <script src="static/js/photoswipe-ui-default.min.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>
